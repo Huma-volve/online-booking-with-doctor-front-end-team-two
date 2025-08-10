@@ -7,10 +7,10 @@ import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router';
 
 export default function ForgetPassword() {
-  //  let regex = {
-  //      email : /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ };
+ const navigate =useNavigate()
   const validationSchema = yup.object({
     email :yup.string().required("email is required").email("Please enter a valid email address."),
           
@@ -19,7 +19,7 @@ export default function ForgetPassword() {
     mutationFn: async(values)=>{
        
     const options= {
-        url: " https://round5-online-booking-with-doctor-api.digital-vision-solutions.com/api/send-reset-otp",
+        url: "https://round5-online-booking-with-doctor-api.digital-vision-solutions.com/api/send-reset-otp",
         method: "POST",
     data: {
       email : values.email,},
@@ -27,11 +27,15 @@ export default function ForgetPassword() {
         Accept: "application/json", }
   }
      const {data} = await axios.request(options)
-    console.log("forget pass data" , data);
+   console.log("forget pass data" , data);
+    return data;
     },
 
     onSuccess: (data)=>{
-toast.success(data.data.message)
+toast.success(data.message)
+setTimeout(()=>{
+  navigate("/Verification")
+},3000)
     },
      onError: (error)=>{
         console.log("SignUp Error:", error);

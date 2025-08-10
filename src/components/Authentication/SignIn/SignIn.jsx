@@ -5,6 +5,7 @@ import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query"
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+
 export default function SignIn() {
   const queryClient = useQueryClient();
   const navigate = useNavigate()
@@ -44,7 +45,7 @@ return data
       localStorage.setItem("authToken", token)
 
     setTimeout(()=>{
-            navigate("/Home")
+            navigate("/FindDoctors")
     }, 3000)
    
   }

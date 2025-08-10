@@ -34,7 +34,10 @@ export default function Verification() {
     },
     onSuccess: ()=>{
          toast.success("Code verified successfully");
-   navigate("/UpdatePassword");
+ 
+   setTimeout(()=>{
+  navigate("/UpdatePassword")
+},3000)
     },
     onError: (error) => {
   console.log("verification Error:", error);

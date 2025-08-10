@@ -1,12 +1,13 @@
-import React from 'react'
+import { useNavigate } from 'react-router'
 
 export default function FindDoctors() {
+  const navigate = useNavigate()
   return (
     <>
-      <main className='px-10 h-screen'>
+      <main className='px-10 h-screen '>
         <section className='grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 items-center'>
             <div className="">
-                <img src="/image3.png" alt="phone image" className='w-full h-auto max-w-md mx-auto md:max-w-full' />
+                <img src="/image3.png" alt="phone image" className='w-full h-auto max-h-[550px] max-w-md mx-auto md:max-w-full' />
             </div>
             <div className=" flex  justify-center flex-col space-y-4 md:space-y-6 h-full">
               <div className="space-y-2 md:space-y-3">  
@@ -17,7 +18,9 @@ Quickly discover trusted doctors near your area. Whether you need
  a general checkup or a specialist, we connect you with nearby clinics for fast and convenient care.</p>
            </div>
                <div className="">
-               <button className='btn w-full'>Get Started</button>
+               <button className='btn w-full' onClick={()=>{
+                navigate("/BookYourAppoinment")
+               }}>Get Started</button>
            </div>
             
             </div>
